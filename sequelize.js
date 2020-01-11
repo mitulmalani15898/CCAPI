@@ -33,6 +33,89 @@ const TeamPlayer = TeamPlayerModel(sequelize, Sequelize);
 const TournamentPoint = TournamentPointModel(sequelize, Sequelize);
 const TournamentMatchPlayerScore = TournamentMatchPlayerScoreModel(sequelize, Sequelize);
 
+// creates table if not exists
+User.sync({ force: false })
+  .then(() => {
+    console.log("User Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("User Table can't Created...")
+  })
+
+Tournament.sync({ force: false })
+  .then(() => {
+    console.log("Tournament Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("Tournament Table can't Created...")
+  })
+
+Team.sync({ force: false })
+  .then(() => {
+    console.log("Team Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("Team Table can't Created...")
+  })
+
+Player.sync({ force: false })
+  .then(() => {
+    console.log("Player Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("Player Table can't Created...")
+  })
+
+TournamentTeam.sync({ force: false })
+  .then(() => {
+    console.log("TournamentTeam Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("TournamentTeam Table can't Created...")
+  })
+
+UserPlayer.sync({ force: false })
+  .then(() => {
+    console.log("UserPlayer Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("UserPlayer Table can't Created...")
+  })
+
+TournamentMatch.sync({ force: false })
+  .then(() => {
+    console.log("TournamentMatch Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("TournamentMatch Table can't Created...")
+  })
+
+TeamPlayer.sync({ force: false })
+  .then(() => {
+    console.log("TeamPlayer Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("TeamPlayer Table can't Created...")
+  })
+
+TournamentPoint.sync({ force: false })
+  .then(() => {
+    console.log("TournamentPoint Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("TournamentPoint Table can't Created...")
+  })
+
+TournamentMatchPlayerScore.sync({ force: false })
+  .then(() => {
+    console.log("TournamentMatchPlayerScore Table Created Successfully...")
+  })
+  .catch(() => {
+    console.log("TournamentMatchPlayerScore Table can't Created...")
+  })
+
+/*
+
 //To get Data Of Teams in Tournament Model
 Team.belongsToMany(Tournament, { through: TournamentTeam, foreignKey: 'teamId' });
 Tournament.belongsToMany(Team, { through: TournamentTeam, foreignKey: 'tournamentId' });
@@ -77,6 +160,8 @@ UserPlayer.hasMany(TournamentMatch, { foreignKey: 'id', sourceKey: "tournamentMa
 //TournamentMatch.belongsTo(UserPlayer, { foreignKey: 'tournamentMatchId', sourceKey: "id" });
 UserPlayer.hasMany(Player, { foreignKey: 'id', sourceKey: "playerId" });
 //Player.belongsTo(UserPlayer, { foreignKey: 'playerId', sourceKey: "id" });
+
+*/
 
 sequelize
   .authenticate()

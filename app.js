@@ -33,11 +33,11 @@ let logDirectory = path.join(__dirname, 'logs');
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 // create a rotating write stream
-let accessLogStream = rfs('access.log', {
+let accessLogStream = rfs.createStream('access.log', {
     interval: '1d', // rotate daily you can also provide the file size limitation.
     path: logDirectory
 });
-let errorLogStream = rfs('error.log', {
+let errorLogStream = rfs.createStream('error.log', {
     interval: '1d', // rotate daily you can also provide the file size limitation.
     path: logDirectory
 });
@@ -107,30 +107,31 @@ app.use((err, req, res, next) => {
         detail: err
     });
 });
-// Code to run if we're in the master process
-if (cluster.isMaster) {
-    // Count the machine's CPUs
-    let cpuCount = require('os').cpus().length;
-    // Create a worker for each CPU
-    for (let i = 0; i < cpuCount; i += 1) {
-        cluster.fork();
-    }
-    // Listen for dying workers
-    cluster.on('exit', (worker) => {
-        // Replace the dead worker, we're not sentimental
-        console.log('Worker %d died :(', worker.id);
-        cluster.fork();
 
-    });
-    // Code to run if we're in a worker process
-}
-else {
-    // Add a basic route – index page
-    app.get('/', (request, response) => {
-        console.log('Request to worker %d', cluster.worker.id);
-        response.send('Hello from Worker ' + cluster.worker.id);
-    });
+// // Code to run if we're in the master process
+// if (cluster.isMaster) {
+//     // Count the machine's CPUs
+//     let cpuCount = require('os').cpus().length;
+//     // Create a worker for each CPU
+//     for (let i = 0; i < cpuCount; i += 1) {
+//         cluster.fork();
+//     }
+//     // Listen for dying workers
+//     cluster.on('exit', (worker) => {
+//         // Replace the dead worker, we're not sentimental
+//         console.log('Worker %d died :(', worker.id);
+//         cluster.fork();
 
-    app.listen(8087);
-    console.log('Worker %d running! on port = %d', cluster.worker.id, port);
-}
+//     });
+//     // Code to run if we're in a worker process
+// }
+// else {
+//     // Add a basic route – index page
+//     app.get('/', (request, response) => {
+//         console.log('Request to worker %d', cluster.worker.id);
+//         response.send('Hello from Worker ' + cluster.worker.id);
+//     });
+
+//     app.listen(8087);
+//     console.log('Worker %d running! on port = %d', cluster.worker.id, port);
+// }

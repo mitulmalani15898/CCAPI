@@ -1,7 +1,3 @@
-// load the things we need
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
-
 module.exports = (sequelize, type) => {
     return sequelize.define('Team', {
       id: {
@@ -30,7 +26,8 @@ module.exports = (sequelize, type) => {
       }
     }, {
       timestamps: false,
-      freezeTableName: true
+      freezeTableName: true,
+      tableName: 'team'
     });
   };
 

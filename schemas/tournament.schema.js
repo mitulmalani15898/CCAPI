@@ -31,7 +31,8 @@ module.exports = (sequelize, type) => {
       }
     }, {
       timestamps: false,
-      freezeTableName: true
+      freezeTableName: true,
+      tableName: 'tournament'
     });
   };
 
