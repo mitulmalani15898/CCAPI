@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { host, database, username, password } = require('./configs/database.js');
+const { host, database, username, password } = require('./configs/databaseConfig.js');
 
 const UserModel = require('./schemas/user.schema');
 const TournamentModel = require('./schemas/tournament.schema');
