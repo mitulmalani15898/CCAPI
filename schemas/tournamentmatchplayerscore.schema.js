@@ -15,7 +15,10 @@ module.exports = (sequelize, type) => {
       four: type.INTEGER,
       stumping: type.INTEGER,
       score: type.INTEGER,
-      isDelete: type.INTEGER,
+      isDelete :{
+        type: type.INTEGER,
+        defaultValue :0
+      },
       createdBy:{
         type: type.INTEGER,
         defaultValue :0

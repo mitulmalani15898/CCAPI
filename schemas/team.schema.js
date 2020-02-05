@@ -7,7 +7,10 @@ module.exports = (sequelize, type) => {
       },
       teamLogo:type.STRING,
       teamName: type.STRING,   
-      isDelete: type.INTEGER,    
+      isDelete :{
+        type: type.INTEGER,
+        defaultValue :0
+      },    
       createdBy:{
         type: type.INTEGER,
         defaultValue :0

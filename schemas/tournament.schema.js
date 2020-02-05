@@ -12,7 +12,10 @@ module.exports = (sequelize, type) => {
       tournamentBanner:type.STRING,
       tournamentName: type.STRING,
       tournamentDescription : type.STRING,      
-      isDelete : type.INTEGER,
+      isDelete :{
+        type: type.INTEGER,
+        defaultValue :0
+      },
       createdBy:{
         type: type.INTEGER,
         defaultValue :0

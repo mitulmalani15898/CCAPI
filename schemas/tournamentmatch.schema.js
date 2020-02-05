@@ -13,7 +13,10 @@ module.exports = (sequelize, type) => {
         type:type.INTEGER,
         defaultValue:0
       },
-      isDelete : type.INTEGER,
+      isDelete :{
+        type: type.INTEGER,
+        defaultValue :0
+      },
       createdBy:{
         type: type.INTEGER,
         defaultValue :0

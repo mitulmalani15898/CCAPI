@@ -8,7 +8,10 @@ module.exports = (sequelize, type) => {
       tournamentId: type.INTEGER,
       teamId: type.INTEGER, 
       playerId: type.INTEGER,
-      isDelete : type.INTEGER,     
+      isDelete : type.INTEGER,isDelete :{
+        type: type.INTEGER,
+        defaultValue :0
+      },     
       createdBy:{
         type: type.INTEGER,
         defaultValue :0
