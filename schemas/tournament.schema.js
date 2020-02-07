@@ -1,41 +1,44 @@
 // load the things we need
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt-nodejs");
 
 module.exports = (sequelize, type) => {
-    return sequelize.define('Tournament', {
+  return sequelize.define(
+    "Tournament",
+    {
       id: {
         type: type.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
-      tournamentBanner:type.STRING,
+      tournamentBanner: type.STRING,
       tournamentName: type.STRING,
-      tournamentDescription : type.STRING,      
-      isDelete :{
+      tournamentDescription: type.STRING,
+      isDelete: {
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
-      createdBy:{
+      createdBy: {
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
-      createdDate:{
-        type : type.DATE,
-        defaultValue : type.fn('NOW')
-      }, 
+      createdDate: {
+        type: type.DATE,
+        defaultValue: type.fn("NOW")
+      },
       updatedBy: {
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
       updatedDate: {
-        type : type.DATE,
-        defaultValue : type.fn('NOW')
+        type: type.DATE,
+        defaultValue: type.fn("NOW")
       }
-    }, {
+    },
+    {
       timestamps: false,
       freezeTableName: true,
-      tableName: 'tournament'
-    });
-  };
-
+      tableName: "tournament"
+    }
+  );
+};

@@ -1,42 +1,45 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('TournamentMatch', {
+  return sequelize.define(
+    "TournamentMatch",
+    {
       id: {
         type: type.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       tournamentId: type.INTEGER,
-      teamId1: type.INTEGER,  
-      teamId2: type.INTEGER,  
+      teamId1: type.INTEGER,
+      teamId2: type.INTEGER,
       matchDate: type.DATE,
       winningTeamId: {
-        type:type.INTEGER,
-        defaultValue:0
-      },
-      isDelete :{
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
-      createdBy:{
+      isDelete: {
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
-      createdDate:{
-        type : type.DATE,
-        defaultValue : type.fn('NOW')
-      }, 
+      createdBy: {
+        type: type.INTEGER,
+        defaultValue: 0
+      },
+      createdDate: {
+        type: type.DATE,
+        defaultValue: type.fn("NOW")
+      },
       updatedBy: {
         type: type.INTEGER,
-        defaultValue :0
+        defaultValue: 0
       },
       updatedDate: {
-        type : type.DATE,
-        defaultValue : type.fn('NOW')
+        type: type.DATE,
+        defaultValue: type.fn("NOW")
       }
-    }, {
+    },
+    {
       timestamps: false,
       freezeTableName: true,
-      tableName: 'tournamentmatch'
-    });
-  };
-
+      tableName: "tournamentmatch"
+    }
+  );
+};
